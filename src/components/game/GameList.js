@@ -3,22 +3,25 @@ import { getGames } from "../../managers/GameManager.js"
 
 export const GameList = (props) => {
 	const [games, setGames] = useState([])
+	const pathname = window.location.pathname
 
 	useEffect(() => {
 		getGames().then(data => setGames(data))
 	}, [])
 
-	return (
-		<article className="lu-list-wrapper games">
+	return (<>
+		<h1>{pathname}</h1>
+		<article className="games lu-list">
 			{
 				games.map(game => {
-					return <section key={`game--${game.id}`} className=" lu-list-item game">
-						<div className="game__title">{game.title} by {game.maker}</div>
+					return <section key={`game--${game.id}`} className="game lu-list-section">
+						<div className="game__title lu-list-section-title">{game.title} by {game.maker}</div>
 						<div className="game__players">{game.number_of_players} players needed</div>
 						<div className="game__skillLevel">Skill level is {game.skill_level}</div>
 					</section>
 				})
 			}
 		</article>
+	</>
 	)
 }

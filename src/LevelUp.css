@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+/* LU Styles */
+.lu-container {
+  padding: 0 1rem;
+}
+
+.lu-container > h1, h2 {
+  text-align: center;
+}
+
+.lu-list {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.lu-list-section {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  line-height: 1.55;
+}
+
+.lu-list-section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
