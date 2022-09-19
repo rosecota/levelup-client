@@ -4,7 +4,7 @@ import { createGame, getGameTypes } from '../../managers/GameManager.js'
 
 
 export const GameForm = () => {
-	const history = useNavigate()
+	const navigate = useNavigate()
 	const [gameTypes, setGameTypes] = useState([])
 
 	/*
@@ -13,8 +13,8 @@ export const GameForm = () => {
 		provide some default values.
 	*/
 	const [currentGame, setCurrentGame] = useState({
-		skillLevel: 1,
-		numberOfPlayers: 0,
+		skillLevel: 0,
+		numberOfPlayers: 1,
 		title: "",
 		maker: "",
 		gameTypeId: 0
@@ -26,7 +26,6 @@ export const GameForm = () => {
 	}, [])
 
 	const changeGameState = (domEvent) => {
-		// TODO: Complete the onChange function
 		const copy = { ...currentGame }
 		copy[domEvent.target.name] = domEvent.target.value
 		setCurrentGame(copy)
@@ -55,15 +54,15 @@ export const GameForm = () => {
 						/>
 						<label htmlFor="numberOfPlayers">Minimum Number of Players: </label>
 						<input type="number" name="numberOfPlayers" required autoFocus className="form-control"
-							value={currentGame.numberOfPlayers} min="0" max="15"
+							value={currentGame.numberOfPlayers} min="1" max="15"
 							onChange={changeGameState}
 						/>
 						<label htmlFor="gameTypeId">Game Type: </label>
 						<select name="gameTypeId" required autoFocus className="form-control"
 							value={currentGame.gameTypeId}
 							onChange={changeGameState}>
-							<option defaultValue="Select..">Select..</option>
-							{gameTypes.map((type) => <option key={`gameType--${type.id}`} defaultValue={type.id}>{type.label}</option>)}
+							<option value="Select...">Choose option...</option>
+							{gameTypes.map((type) => <option key={`gameType--${type.id}`} value={type.id}>{type.label}</option>)}
 						</select>
 					</div>
 				</fieldset>
@@ -74,17 +73,18 @@ export const GameForm = () => {
 						// Prevent form from being submitted
 						evt.preventDefault()
 
+						// set selected form data for API
 						const game = {
 							maker: currentGame.maker,
 							title: currentGame.title,
-							numberOfPlayers: parseInt(currentGame.numberOfPlayers),
-							skillLevel: parseInt(currentGame.skillLevel),
-							gameTypeId: parseInt(currentGame.gameTypeId)
+							number_of_players: parseInt(currentGame.numberOfPlayers),
+							skill_level: parseInt(currentGame.skillLevel),
+							game_type: parseInt(currentGame.gameTypeId)
 						}
 
 						// Send POST request to API
 						createGame(game)
-							.then(() => history.push("/games"))
+							.then(() => navigate("/games"))
 					}}
 					className="button-62">Create</button>
 			</form >
