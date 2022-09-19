@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react"
+import { useNavigate } from 'react-router-dom'
 import { getGames } from "../../managers/GameManager.js"
 
 export const GameList = (props) => {
 	const [games, setGames] = useState([])
+	const navigate = useNavigate()
 	const pathname = window.location.pathname
 
 	useEffect(() => {
@@ -11,6 +13,11 @@ export const GameList = (props) => {
 
 	return (<>
 		<h1>{pathname}</h1>
+		<button className="btn btn-2 btn-sep icon-create marge-auto button-62"
+			onClick={() => {
+				navigate({ pathname: "/games/new" })
+			}}
+		>Register New Game</button>
 		<article className="games lu-list">
 			{
 				games.map(game => {
