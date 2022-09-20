@@ -34,7 +34,7 @@ export const EventForm = () => {
 	return (
 		<div className="lu-list">
 			<form className="eventForm">
-				<h2 className="eventForm__title lu-form-title">Schedule New Event</h2>
+				<h2 className="eventForm__title lu-form-title">Register New Event</h2>
 				<fieldset>
 					<div className="form-group lu-form-group">
 						<label htmlFor="description">Description </label>

@@ -37,31 +37,32 @@ export const GameForm = () => {
 				<h2 className="gameForm__title lu-form-title">Register New Game</h2>
 				<fieldset>
 					<div className="form-group lu-form-group">
-						<label htmlFor="title">Title: </label>
+						<label htmlFor="title">Title </label>
 						<input type="text" name="title" required autoFocus className="form-control"
 							value={currentGame.title}
 							onChange={changeGameState}
+							placeholder="Title"
 						/>
-						<label htmlFor="maker">Maker: </label>
+						<label htmlFor="maker">Maker </label>
 						<input type="text" name="maker" required autoFocus className="form-control"
 							value={currentGame.maker}
 							onChange={changeGameState}
 						/>
-						<label htmlFor="skillLevel">Skill Level: </label>
+						<label htmlFor="skillLevel">Skill Level </label>
 						<input type="number" name="skillLevel" required autoFocus className="form-control"
 							value={currentGame.skillLevel} min="0" max="10"
 							onChange={changeGameState}
 						/>
-						<label htmlFor="numberOfPlayers">Minimum Number of Players: </label>
+						<label htmlFor="numberOfPlayers">Minimum Number of Players </label>
 						<input type="number" name="numberOfPlayers" required autoFocus className="form-control"
 							value={currentGame.numberOfPlayers} min="1" max="15"
 							onChange={changeGameState}
 						/>
-						<label htmlFor="gameTypeId">Game Type: </label>
+						<label htmlFor="gameTypeId">Game Type </label>
 						<select name="gameTypeId" required autoFocus className="form-control"
 							value={currentGame.gameTypeId}
 							onChange={changeGameState}>
-							<option value="Select...">Choose option...</option>
+							<option value="Select...">Select...</option>
 							{gameTypes.map((type) => <option key={`gameType--${type.id}`} value={type.id}>{type.label}</option>)}
 						</select>
 					</div>

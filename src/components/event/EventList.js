@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react"
+import { useNavigate } from 'react-router-dom'
 import { getEvents } from "../../managers/EventManager.js"
 
 export const EventList = (props) => {
+	const navigate = useNavigate()
 	const [events, setEvents] = useState([])
 	const pathname = window.location.pathname
 
@@ -11,6 +13,11 @@ export const EventList = (props) => {
 
 	return (<>
 		<h1>{pathname}</h1>
+		<button className="btn btn-2 btn-sep icon-create marge-auto button-62"
+			onClick={() => {
+				navigate({ pathname: "/events/new" })
+			}}
+		>Register New Event</button>
 		<article className="events lu-list">
 			{
 				events.map(event => {
