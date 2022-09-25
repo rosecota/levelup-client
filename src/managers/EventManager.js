@@ -40,5 +40,4 @@ export const updateEvent = (event, eventId) => {
 		},
 		body: JSON.stringify(event)
 	})
-		.then(response => response.json())
 }
