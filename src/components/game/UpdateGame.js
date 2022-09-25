@@ -87,7 +87,7 @@ export const UpdateGame = () => {
 						updateGame(game, gameId)
 							.then(() => navigate("/games"))
 					}}
-					className="button-62">Update!</button>
+					className="button-62">Update</button>
 			</form >
 		</div>
 	)
