@@ -143,6 +143,10 @@ code {
 .btn-3 {
 	background: #e74c3c;
 	color: #fff;
+	padding: 0.25rem 0.5rem;
+	border: 1px solid black;
+	font-size: .85rem;
+	margin: .85rem auto 0;
 }
 
 .btn-3:hover {
